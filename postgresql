@@ -136,7 +136,8 @@ left join profesor p
 left join nota n
 	on ( g.id_grupo = n.id_grupo and n.id_estudiante = e.id_estudiante )
 
-order by g.id_grupo
+order by g.id_grup
+
 
 
 /*
