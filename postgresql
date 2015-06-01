@@ -1,22 +1,22 @@
 /* 
 	
-	INSTRUCCIONES POSTGRESQL
-	________________________
+INSTRUCCIONES POSTGRESQL
+________________________
 
-	INDICE
-	
-	1.	WHERE
-	2.	ORDER BY
-	3.	LEFT JOIN
-	4.	AGV() - LEFT JOIN - GROUP BY
-	5.	COUNT() - GROUP BY - HAVING - ORDER BY
-	6.	SUM() - LEFT JOIN - GROUP BY
-	7.	SUBSTR()
-	8.	LENGTH()
-	9.	RPAD()
-	10. OPERADORES DE CONPARACION
-	11.	IN
-	12.	ARRAY_AGG()
+INDICE
+
+1.	WHERE
+2.	ORDER BY
+3.	LEFT JOIN
+4.	AGV() - LEFT JOIN - GROUP BY
+5.	COUNT() - GROUP BY - HAVING - ORDER BY
+6.	SUM() - LEFT JOIN - GROUP BY
+7.	SUBSTR()
+8.	LENGTH()
+9.	RPAD()
+10. OPERADORES DE CONPARACION
+11.	IN
+12.	ARRAY_AGG()
 
 */
 
@@ -81,7 +81,7 @@ WITH (oids = false);
 /*
 ============================================================================================================
 	1.  Estudiantes  donde el grupo sea 1-php
-			- WHERE
+	- WHERE
 ============================================================================================================
 */
 
