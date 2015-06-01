@@ -8,7 +8,7 @@ INDICE
 1.	WHERE
 2.	ORDER BY
 3.	LEFT JOIN
-4.	AGV() - LEFT JOIN - GROUP BY 
+4.	AGV() - LEFT JOIN - GROUP BY
 5.	COUNT() - GROUP BY - HAVING - ORDER BY
 6.	SUM() - LEFT JOIN - GROUP BY
 7.	SUBSTR()
@@ -81,7 +81,7 @@ WITH (oids = false);
 /*
 ============================================================================================================
 	1.  Estudiantes  donde el grupo sea 1-php
-	- WHERE
+			- WHERE
 ============================================================================================================
 */
 
@@ -136,8 +136,7 @@ left join profesor p
 left join nota n
 	on ( g.id_grupo = n.id_grupo and n.id_estudiante = e.id_estudiante )
 
-order by g.id_grup
-
+order by g.id_grupo
 
 
 /*
@@ -150,8 +149,8 @@ order by g.id_grup
 */
 select 
 	g.id_grupo,
-    g.nombre,
-    avg(n.nota) as promedioXgrupo
+  g.nombre,
+  avg(n.nota) as promedioXgrupo
 
 from
 	grupo g
@@ -232,7 +231,7 @@ from
 */
 	select 
 	nombre,
-    length(nombre)
+  length(nombre)
 from
 	estudiante
 order by length(nombre)
@@ -253,21 +252,21 @@ from
 ============================================================================================================
 	10.	Operadores de comparacion.
 
-		 	<	less than
-			>	greater than
-			<=	less than or equal to
-			>=	greater than or equal to
-			=	equal
-			<> or !=	not equal
-			between
-			is null
-			is not nll
+ 	<	less than
+	>	greater than
+	<=	less than or equal to
+	>=	greater than or equal to
+	=	equal
+	<> or !=	not equal
+	between
+	is null
+	is not nll
 ============================================================================================================
 */
 
 select 
 	e.nombre,
-    n.nota
+  n.nota
 from
 	estudiante e
 inner join nota n 
@@ -277,12 +276,13 @@ where n.nota>4
 
 select 
 	e.nombre,
-    n.nota
+  n.nota
 from
 	estudiante e
 inner join nota n 
 	on e.id_estudiante=n.id_estudiante
 where n.nota between 4 and 4.7 
+
 
 /*Trae el resultado donde el campo id_profesor este con valor NULL*/
 select 
@@ -290,6 +290,7 @@ select
 from 
 	grupo
 where id_profesor IS NULL
+
 
 /*Trae el resultado donde el campo id_profesor no esten vacidos */
 select 
@@ -307,7 +308,7 @@ where id_profesor IS not NULL
 
 select 
 	e.nombre,
-    n.nota
+  n.nota
 from
 	estudiante e
 inner join nota n 
