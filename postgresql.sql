@@ -28,11 +28,11 @@ INDICE
 ============================================================================================================
 */
 CREATE TABLE public.estudiante (
-  id_estudiante INTEGER NOT NULL,
-  nombre TEXT,
-  apellido TEXT,
-  id_grupo INTEGER,
-  CONSTRAINT estudiante_pkey PRIMARY KEY(id_estudiante)
+	id_estudiante INTEGER NOT NULL,
+	nombre TEXT,
+	apellido TEXT,
+	id_grupo INTEGER,
+	CONSTRAINT estudiante_pkey PRIMARY KEY(id_estudiante)
 ) 
 WITH (oids = false);
 
@@ -42,10 +42,10 @@ WITH (oids = false);
 ============================================================================================================
 */
 CREATE TABLE public.profesor (
-  id_profesor INTEGER NOT NULL,
-  nombre TEXT,
-  apellido TEXT,
-  CONSTRAINT profesor_pkey PRIMARY KEY(id_profesor)
+	id_profesor INTEGER NOT NULL,
+	nombre TEXT,
+	apellido TEXT,
+	CONSTRAINT profesor_pkey PRIMARY KEY(id_profesor)
 ) 
 WITH (oids = false);
 
@@ -55,10 +55,10 @@ WITH (oids = false);
 ============================================================================================================
 */
 CREATE TABLE public.grupo (
-  id_grupo INTEGER NOT NULL,
-  id_profesor INTEGER,
-  nombre TEXT,
-  CONSTRAINT grupo_pkey PRIMARY KEY(id_grupo)
+	id_grupo INTEGER NOT NULL,
+	id_profesor INTEGER,
+	nombre TEXT,
+	CONSTRAINT grupo_pkey PRIMARY KEY(id_grupo)
 ) 
 WITH (oids = false);
 
@@ -68,11 +68,11 @@ WITH (oids = false);
 ============================================================================================================
 */
 CREATE TABLE public.notas (
-  id_nota INTEGER NOT NULL,
-  id_estudiante INTEGER,
-  id_grupo INTEGER,
-  nota NUMERIC,
-  CONSTRAINT grupo_pkey PRIMARY KEY(id_grupo)
+	id_nota INTEGER NOT NULL,
+	id_estudiante INTEGER,
+	id_grupo INTEGER,
+	nota NUMERIC,
+	CONSTRAINT grupo_pkey PRIMARY KEY(id_grupo)
 ) 
 WITH (oids = false);
 
@@ -112,24 +112,24 @@ order by id_grupo, nombre, apellido
 ============================================================================================================
 	3.	LEFT JOIN, mostrar todos los registros de la tabla grupo mas id_estudiante, nombre de estudiante, nota,
 			id_profesor nombre de profesor.
-		 	condicion adicional: traer el grupo anque no tenga estudiantes ni profesor. y ordenarlo por id de prupo.
-		 	- LEFT JOIN
-		 	- ORDER BY
+			condicion adicional: traer el grupo anque no tenga estudiantes ni profesor. y ordenarlo por id de prupo.
+			- LEFT JOIN
+			- ORDER BY
 ============================================================================================================
 */
 select 
-  e.id_estudiante,
-  e.nombre as nombre_estudiante,
-  g.nombre as nombre_grupo,
-  g.id_grupo as id_de_grupo,
-  p.id_profesor,
-  p.nombre as nombre_profesor,
-  n.nota
+	e.id_estudiante,
+	e.nombre as nombre_estudiante,
+	g.nombre as nombre_grupo,
+	g.id_grupo as id_de_grupo,
+	p.id_profesor,
+	p.nombre as nombre_profesor,
+	n.nota
 
 from grupo g
 left join estudiante e
 	on ( g.id_grupo = e.id_grupo )
-    
+		
 left join profesor p
 	on ( g.id_grupo = p.id_profesor )
 
@@ -142,22 +142,22 @@ order by g.id_grupo
 /*
 ============================================================================================================
 	4.	Promedio de nota por grupos
-		 	- AVG() -> Funcion para obtener promedios
-		 	- LEFT JOIN
-		 	- GROUP BY
+			- AVG() -> Funcion para obtener promedios
+			- LEFT JOIN
+			- GROUP BY
 ============================================================================================================
 */
 select 
 	g.id_grupo,
-  g.nombre,
-  avg(n.nota) as promedioXgrupo
+	g.nombre,
+	avg(n.nota) as promedioXgrupo
 
 from
 	grupo g
 
 left join nota n
 	on ( g.id_grupo = n.id_grupo )
-    
+		
 group by g.id_grupo
 
 /*
@@ -171,8 +171,8 @@ group by g.id_grupo
 */
 SELECT
 	id_grupo,
-  count(*) as estudiantes
-    
+	count(*) as estudiantes
+		
 FROM estudiante
 WHERE 1=1
 
@@ -187,35 +187,35 @@ order by
 /*
 ============================================================================================================
 	6.	Suma de tosos los grupos y sacar el promedio
-		 	- SUM() -> Funcion para obtener promedios
-		 	- LEFT JOIN
-		 	- GROUP BY
+			- SUM() -> Funcion para obtener promedios
+			- LEFT JOIN
+			- GROUP BY
 ============================================================================================================
 */
 select
 	g.id_grupo,
-  g.nombre,
-  sum(n.nota)
-    
+	g.nombre,
+	sum(n.nota)
+		
 from
 	grupo g
 
 left join nota n
 	on ( g.id_grupo = n.id_grupo )
-    
+		
 group by g.id_grupo
 
 /*
 ============================================================================================================
 	7.	La funcion substring(Subcadena) empieza a contar desde (1)
-		 	- SUBSTR
+			- SUBSTR
 ============================================================================================================
 */
 
 	substr(nombre,1,3)
 from
 	estudiante
-   
+	 
 /* Si el primer parametro esta encerrado en commillas ('') el substring se hara
 	 de acuerdo a esa cadena y no a los datos del campo nombre*/
 select 
@@ -226,12 +226,12 @@ from
 /*
 ============================================================================================================
 	8.	La funcion length(longitud) cuenta la longitud del campo
-		 	- LENGTH
+			- LENGTH
 ============================================================================================================
 */
 	select 
 	nombre,
-  length(nombre)
+	length(nombre)
 from
 	estudiante
 order by length(nombre)
@@ -239,7 +239,7 @@ order by length(nombre)
 /*
 ============================================================================================================
 	9.	La funcion rpad en este caso concatena los dos campos.
-		 	- RPAD
+			- RPAD
 ============================================================================================================
 */
 
@@ -252,7 +252,7 @@ from
 ============================================================================================================
 	10.	Operadores de comparacion.
 
- 	<	less than
+	<	less than
 	>	greater than
 	<=	less than or equal to
 	>=	greater than or equal to
@@ -266,7 +266,7 @@ from
 
 select 
 	e.nombre,
-  n.nota
+	n.nota
 from
 	estudiante e
 inner join nota n 
@@ -276,7 +276,7 @@ where n.nota>4
 
 select 
 	e.nombre,
-  n.nota
+	n.nota
 from
 	estudiante e
 inner join nota n 
@@ -308,7 +308,7 @@ where id_profesor IS not NULL
 
 select 
 	e.nombre,
-  n.nota
+	n.nota
 from
 	estudiante e
 inner join nota n 
@@ -325,5 +325,3 @@ select
 	array_agg(nombre)
 from 
 	grupo
-
-
